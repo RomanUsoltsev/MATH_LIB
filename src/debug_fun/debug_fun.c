@@ -78,7 +78,7 @@ LD change_sum(int mode, LD b, LD a, LD *sum_1) {
     case TST_FMOD:
       *sum_1 = ST_FMOD; sum_2 = S21_FMOD; break;
     default:
-      *sum_1 = S21_INFINITY;
+      *sum_1 = MY_INFINITY;
   }
   return sum_2;
 }

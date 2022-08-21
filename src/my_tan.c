@@ -1,12 +1,12 @@
 //
 // Created by roman on 01.02.2022.
 //
-#include "s21_math.h"
+#include "my_math.h"
 
-long double s21_tan(double x) {
+long double my_tan(double x) {
   LD sum = 0;
   if (check_null((LD)x) == SUCCESS) {
-    LD X = s21_fmod(x, S21_PI);
+    LD X = my_fmod(x, MY_PI);
     int sign = 1;
     if (X < 0) { X = -X; sign *= -1;}
     sum = sign *  1/(-1.570796326794835 + X) * (-0.000000000001445936822351893 + X* (-1.5707963263494995 +

@@ -1,12 +1,12 @@
-#include "s21_math.h"
+#include "my_math.h"
 
-long double s21_cos(double x) {
+long double my_cos(double x) {
   LD sum = 0;
   if (check_null((LD)x) == SUCCESS) {
-    LD X = s21_fmod(x, S21_PI3);
+    LD X = my_fmod(x, MY_PI3);
     int sign = 1;
     if (X < 0) { X *= -1; }
-    if (X > S21_PI) { X -= S21_PI; sign = -1;}
+    if (X > MY_PI) { X -= MY_PI; sign = -1;}
     sum = sign * 1/(2.276093199138007 + X) * (2.2760931991380065 + X* (0.9999999999999992 +
     X* (-1.1380465995688993 + X* (-0.5000000000002477 + X* (0.09483721661051057 +
     X* (0.04166666691455743 + X* (-0.003161241955788155 + X* (-0.0013888840677429995 +

@@ -1,6 +1,6 @@
-#include "s21_math.h"
+#include "my_math.h"
 
-long double s21_ceil(double x) {
+long double my_ceil(double x) {
   long long int y = (long long int)(x);
   long double res;
   if (x >= 0 && (x - (double) y > 0))

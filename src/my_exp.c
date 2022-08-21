@@ -1,14 +1,14 @@
-#include "s21_math.h"
+#include "my_math.h"
 
-long double s21_exp(double x) {
+long double my_exp(double x) {
   LD sum, X = x;
   if (check_null((LD)x) == SUCCESS) {
-    if (x != S21_INFINITY && x != S21_NAN) {
+    if (x != MY_INFINITY && x != MY_NAN) {
       sum = remez_algorithm_polynom_exp(X);
     } else { sum = -x;}
 
   } else {
-    if (x == -S21_INFINITY) {
+    if (x == -MY_INFINITY) {
       sum = 0;
     } else {
       sum = x;
@@ -38,8 +38,8 @@ LD remez_algorithm_polynom_exp(LD X) {
 int count_2_pow(LD *x) {
   LD X = *x;
   int count = 0;
-  while ( X > 1) { ++count; X = X - S21_LOG2; }
-  *x = *x - count * S21_LOG2;
+  while ( X > 1) { ++count; X = X - MY_LOG2; }
+  *x = *x - count * MY_LOG2;
   return count;
 }
 

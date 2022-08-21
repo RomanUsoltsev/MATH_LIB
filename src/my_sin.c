@@ -1,14 +1,14 @@
 //
 // Created by roman on 01.02.2022.
 //
-#include "s21_math.h"
-long double s21_sin(double x) {
+#include "my_math.h"
+long double my_sin(double x) {
   LD sum = 0;
   if (check_null((LD)x) == SUCCESS) {
-    LD X = s21_fmod(x, S21_PI3);
+    LD X = my_fmod(x, MY_PI3);
     int sign = 1;
     if (X < 0) { X *= -1; sign *= -1;}
-    if (X > S21_PI) { X -= S21_PI; sign *= -1;}
+    if (X > MY_PI) { X -= MY_PI; sign *= -1;}
 
     sum = sign * 1/(-2.540551790332857 + X) *  (0.000000000000000006827260233793237 +X* (-2.5405517903328594+
     X* (1.0000000000001241 + X* (0.4234252983859943 + X* (-0.16666666663237875 +

@@ -1,13 +1,13 @@
-#include "s21_math.h"
+#include "my_math.h"
 
-long double s21_log(double x) {
+long double my_log(double x) {
   LD sum, X = x;
   if (check_null((LD)x) == SUCCESS) {
     if (x > 0.8) {
       sum = remez_algorithm_polynom(X);
     } else if (x > 0 && x <= 0.8) {sum = -remez_algorithm_polynom(1.f / X);
     } else if ( x == 0) { sum = -__builtin_inf();
-    } else { sum = -S21_NAN;}
+    } else { sum = -MY_NAN;}
 
   } else { sum = x;}
   return sum;
@@ -37,12 +37,12 @@ LD remez_algorithm_polynom(LD X) {
   X* (0.28295927804127013 + X* (-0.2799806277385297 + X* (0.17278320297435368 + X* (-0.07560317237275387 +
   X* (0.024029167619612213 + X* (-0.005466520209606878 + X* (0.0008477752057801314 +
   (-0.00008053118456379199 + 0.0000035421605687533005 *X) *X))))))))))))));
-  sum +=  count * S21_LOG2;
+  sum += count * MY_LOG2;
   return sum;
 }
 
 int check_null(LD x) {
   int flag = SUCCESS;
-  if (__builtin_isnan(x) == 1 || x == S21_INFINITY || x == - S21_INFINITY) { flag = FAILURE;}
+  if (__builtin_isnan(x) == 1 || x == MY_INFINITY || x == - MY_INFINITY) { flag = FAILURE;}
   return flag;
 }

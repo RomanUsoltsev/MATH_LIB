@@ -4,7 +4,7 @@
 
 #ifndef SRC_DEBUG_FUN_DEBUG_FUN_H_
 #define SRC_DEBUG_FUN_DEBUG_FUN_H_
-#include "../s21_math.h"
+#include "../my_math.h"
 #include <stdlib.h>
 #include <math.h>
 // DEBUG_FUN________________________________DEBUG_FUN
@@ -26,14 +26,14 @@
 #define ST_TAN tan(b)
 #define ST_FMOD fmod(b, a)
 
-#define S21_LN s21_log(b)
-#define S21_EXP s21_exp(b)
-#define S21_POW s21_pow(b, a)
-#define S21_SQRT s21_sqrt(b)
-#define S21_COS s21_cos(b)
-#define S21_SIN s21_sin(b)
-#define S21_TAN s21_tan(b)
-#define S21_FMOD s21_fmod(b, a)
+#define S21_LN my_log(b)
+#define S21_EXP my_exp(b)
+#define S21_POW my_pow(b, a)
+#define S21_SQRT my_sqrt(b)
+#define S21_COS my_cos(b)
+#define S21_SIN my_sin(b)
+#define S21_TAN my_tan(b)
+#define S21_FMOD my_fmod(b, a)
 
 LD change_sum(int mode, LD b, LD a, LD *sum_1);
 int check_fun(int mode, unsigned int seed,

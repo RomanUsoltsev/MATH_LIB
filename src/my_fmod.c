@@ -1,11 +1,11 @@
-#include "s21_math.h"
+#include "my_math.h"
 
 #define MANTISSA_MASK 0x000fffffffffffff  //  2^53 - 1
 #define ABS_MASK 0x8000000000000000ULL  //  2^63
 #define NEW_MAN_MASK 0x0010000000000000ULL  //  2^52
 #define MAX_MASK 0x7fefffffffffffffULL  //  2^64 - 1
 
-long double s21_fmod(double x, double y) {
+long double my_fmod(double x, double y) {
   LD ans = 0;
   fmod_type uint_64_X = {x}; fmod_type uint_64_Y = {y};
   ULL my_abs_x = uint_64_X.u & ~ABS_MASK; ULL my_abs_y = uint_64_Y.u & ~ABS_MASK;
