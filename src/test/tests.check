@@ -1,0 +1,563 @@
+#include "../s21_math.h"
+#include "../debug_fun/debug_fun.h"
+#include <math.h>
+
+#test test_ln_2
+long long int i_min = 1000000 - 5;
+long long int j_min = 100;
+long long int i_max = 1000000;
+long long int j_max = 1000;
+int flag = check_fun(TST_LN, 0, i_min, j_min, i_max, j_max);
+ck_assert_int_eq(flag, 1);
+
+#test test_ln_3
+long long int i_min = 1000000000 - 5;
+long long int j_min = 100;
+long long int i_max = 1000000000;
+long long int j_max = 1000;
+int flag = check_fun(TST_LN, 0, i_min, j_min, i_max, j_max);
+ck_assert_int_eq(flag, 1);
+
+
+#test test_exp_1
+long long int i_min = 0;
+long long int j_min = 0;
+long long int i_max = 10000;
+long long int j_max = 100;
+int flag = check_fun(TST_EXP, 0, i_min, j_min, i_max, j_max);
+ck_assert_int_eq(flag, 0);
+
+#test test_exp_2
+long long int i_max = 10000000;
+long long int j_max = 1;
+long long int i_min = i_max - 1;
+long long int j_min = 0;
+int flag = check_fun(TST_EXP, 0, i_min, j_min, i_max, j_max);
+ck_assert_int_eq(flag, SUCCESS);
+
+
+#test test_pow_1
+long long int i_min = 0;
+long long int j_min = -9;
+long long int i_max = 8765.55645;
+long long int j_max = 0;
+int flag = check_fun(TST_POW, 0, i_min, j_min, i_max, j_max);
+ck_assert_int_eq(flag, 1);
+
+#test test_pow_2
+long long int i_min = 1000000 - 5;
+long long int j_min = 100;
+long long int i_max = 1000000;
+long long int j_max = 1000;
+int flag = check_fun(TST_POW, 0, i_min, j_min, i_max, j_max);
+ck_assert_int_eq(flag, 0);
+
+#test test_pow_3
+long long int i_min = 1000000000 - 5;
+long long int j_min = 100;
+long long int i_max = 1000000000;
+long long int j_max = 100;
+int flag = check_fun(TST_POW, 0, i_min, j_min, i_max, j_max);
+ck_assert_int_eq(flag, 1);
+
+#test test_sqrt_1
+int flag = SUCCESS;
+LD sum_1 = sqrt(10);
+LD sum_2 = s21_sqrt(10);
+LD err = sum_1 - sum_2;
+err = err < 0 ? -err : err;
+if (err > 0.0000001) {
+flag = FAILURE;
+printf("TRY - |%.20Lf|\nMMY - |%.20Lf|\nERR - |%.20Lf|\n\n", sum_1, sum_2, err);
+}
+ck_assert_int_eq(flag, 1);
+
+#test test_cos_1
+long long int i_min = -100000000;
+long long int j_min = 1;
+long long int i_max = i_min + 5;
+long long int j_max = j_min + 1;
+int flag = check_fun(TST_COS, 0, i_min, j_min, i_max, j_max);
+ck_assert_int_eq(flag, SUCCESS);
+
+
+#test test_cos_2
+long long int i_min = 0;
+long long int j_min = 1;
+long long int i_max = 100000;
+long long int j_max = j_min + 1;
+int flag = check_fun(TST_COS, 0, i_min, j_min, i_max, j_max);
+ck_assert_int_eq(flag, SUCCESS);
+
+
+#test test_cos_3
+long long int i_min = (100000000 - 1);
+long long int j_min = 1;
+long long int i_max = i_min + 1;
+long long int j_max = j_min + 1;
+int flag = check_fun(TST_COS, 0, i_min, j_min, i_max, j_max);
+ck_assert_int_eq(flag, SUCCESS);
+
+#test test_sin_1
+long long int i_min = -100000000;
+long long int j_min = 1;
+long long int i_max = i_min + 5;
+long long int j_max = j_min + 1;
+int flag = check_fun(TST_SIN, 0, i_min, j_min, i_max, j_max);
+ck_assert_int_eq(flag, SUCCESS);
+
+
+#test test_sin_2
+long long int i_min = 0;
+long long int j_min = 1;
+long long int i_max = 100000;
+long long int j_max = j_min + 1;
+int flag = check_fun(TST_SIN, 0, i_min, j_min, i_max, j_max);
+ck_assert_int_eq(flag, SUCCESS);
+
+
+#test test_sin_3
+long long int i_min = (100000000 - 1);
+long long int j_min = 1;
+long long int i_max = i_min + 1;
+long long int j_max = j_min + 1;
+int flag = check_fun(TST_SIN, 0, i_min, j_min, i_max, j_max);
+ck_assert_int_eq(flag, SUCCESS);
+
+
+#test test_tan_1
+long long int i_min = -100000000;
+long long int j_min = 1;
+long long int i_max = i_min + 5;
+long long int j_max = j_min + 1;
+int flag = check_fun(TST_TAN, 0, i_min, j_min, i_max, j_max);
+ck_assert_int_eq(flag, SUCCESS);
+
+
+#test test_tan_2
+long long int i_min = 0;
+long long int j_min = 1;
+long long int i_max = 100000;
+long long int j_max = j_min + 1;
+int flag = check_fun(TST_TAN, 0, i_min, j_min, i_max, j_max);
+ck_assert_int_eq(flag, SUCCESS);
+
+
+#test test_tan_3
+long long int i_min = (100000000 - 1);
+long long int j_min = 1;
+long long int i_max = i_min + 1;
+long long int j_max = j_min + 1;
+int flag = check_fun(TST_TAN, 0, i_min, j_min, i_max, j_max);
+ck_assert_int_eq(flag, SUCCESS);
+
+#test test_fmod_1
+long long int i_min = -100000000;
+long long int j_min = 1;
+long long int i_max = i_min + 5;
+long long int j_max = j_min + 1;
+int flag = check_fun(TST_FMOD, 0, i_min, j_min, i_max, j_max);
+ck_assert_int_eq(flag, SUCCESS);
+
+
+#test test_fmod_2
+long long int i_min = 0;
+long long int j_min = 1;
+long long int i_max = 100000;
+long long int j_max = j_min + 1;
+int flag = check_fun(TST_FMOD, 0, i_min, j_min, i_max, j_max);
+ck_assert_int_eq(flag, SUCCESS);
+
+
+#test test_fmod_3
+long long int i_min = (100000000 - 1);
+long long int j_min = 1;
+long long int i_max = i_min + 1;
+long long int j_max = j_min + 1;
+int flag = check_fun(TST_FMOD, 0, i_min, j_min, i_max, j_max);
+ck_assert_int_eq(flag, SUCCESS);
+
+//____________________acos____________________
+
+#test test_s21_acos_1
+ck_assert_ldouble_eq_tol(s21_acos(0), acos(0), 15);
+
+#test test_s21_acos_2
+ck_assert_ldouble_eq_tol(s21_acos(0.1), acos(0.1), 15);
+
+#test test_s21_acos_3
+ck_assert_ldouble_eq_tol(s21_acos(0.01), acos(0.01), 15);
+
+#test test_s21_acos_4
+ck_assert_ldouble_eq_tol(s21_acos(-0.001), acos(-0.001), 15);
+
+#test test_s21_acos_5
+ck_assert_ldouble_eq_tol(s21_acos(0.0001), acos(0.0001), 15);
+
+#test test_s21_acos_6
+ck_assert_ldouble_eq_tol(s21_acos(-0.00001), acos(-0.00001), 15);
+
+#test test_s21_acos_7
+ck_assert_ldouble_eq_tol(s21_acos(0.000001), acos(0.000001), 15);
+
+#test test_s21_acos_8
+ck_assert_ldouble_eq_tol(s21_acos(-0.000001), acos(-0.000001), 15);
+
+#test test_s21_acos_9
+ck_assert_ldouble_eq_tol(s21_acos(1), acos(1), 15);
+
+#test test_s21_acos_10
+ck_assert_ldouble_eq_tol(s21_acos(-1), acos(-1), 15);
+
+#test test_s21_acos_11
+ck_assert_ldouble_eq_tol(s21_acos(0.999999), acos(0.999999), 15);
+
+#test test_s21_acos_12
+ck_assert_ldouble_eq_tol(s21_acos(-0.999999), acos(-0.999999), 15);
+
+#test test_s21_acos_13
+ck_assert_ldouble_eq_tol(s21_acos(1.000000), acos(1.000000), 15);
+
+#test test_s21_acos_14
+ck_assert_ldouble_eq_tol(s21_acos(0.5), acos(0.5), 15);
+
+#test test_s21_acos_15
+ck_assert_ldouble_eq_tol(s21_acos(0.89), acos(0.89), 15);
+
+#test test_s21_acos_16
+ck_assert_ldouble_eq_tol(s21_acos(-0.75), acos(-0.75), 15);
+
+#test test_s21_acos_17
+ck_assert_ldouble_eq_tol(s21_acos(-0.300009), acos(-0.300009), 15);
+
+#test test_s21_acos_18
+ck_assert_ldouble_nan(s21_acos(1.000001));
+
+#test test_s21_acos_19
+ck_assert_ldouble_nan(s21_acos(-1.000001));
+
+#test test_s21_acos_20
+ck_assert_ldouble_nan(s21_acos(10));
+
+#test test_s21_acos_21
+ck_assert_ldouble_nan(s21_acos(999999));
+
+#test test_s21_acos_22
+ck_assert_ldouble_nan(s21_acos(999990.99));
+
+#test test_s21_acos_23
+ck_assert_ldouble_nan(s21_acos(-50.999));
+
+
+//____________________asin____________________
+
+#test test_s21_asin_1
+ck_assert_ldouble_eq_tol(s21_asin(0), asin(0), 15);
+
+#test test_s21_asin_2
+double x = 0.1;
+ck_assert_ldouble_eq_tol(s21_asin(x), asin(x), 15);
+
+#test test_s21_asin_3
+ck_assert_ldouble_eq_tol(s21_asin(0.01), asin(0.01), 15);
+
+#test test_s21_asin_4
+ck_assert_ldouble_eq_tol(s21_asin(-0.001), asin(-0.001), 15);
+
+#test test_s21_asin_5
+ck_assert_ldouble_eq_tol(s21_asin(0.0001), asin(0.0001), 15);
+
+#test test_s21_asin_6
+ck_assert_ldouble_eq_tol(s21_asin(-0.00001), asin(-0.00001), 15);
+
+#test test_s21_asin_7
+long double a = s21_asin(0.000001);
+long double b = asin(0.000001);
+ck_assert_ldouble_eq_tol(a, b, 15);
+
+#test test_s21_asin_8
+ck_assert_ldouble_eq_tol(s21_asin(-0.000001), asin(-0.000001), 15);
+
+#test test_s21_asin_9
+ck_assert_ldouble_eq_tol(s21_asin(1), asin(1), 15);
+
+#test test_s21_asin_10
+ck_assert_ldouble_eq_tol(s21_asin(-1), asin(-1), 15);
+
+#test test_s21_asin_11
+ck_assert_ldouble_eq_tol(s21_asin(0.999999), asin(0.999999), 15);
+
+#test test_s21_asin_12
+ck_assert_ldouble_eq_tol(s21_asin(-0.999999), asin(-0.999999), 15);
+
+#test test_s21_asin_13
+ck_assert_ldouble_eq_tol(s21_asin(1.000000), asin(1.000000), 15);
+
+#test test_s21_asin_14
+ck_assert_ldouble_eq_tol(s21_asin(0.5), asin(0.5), 15);
+
+#test test_s21_asin_15
+ck_assert_ldouble_eq_tol(s21_asin(0.89), asin(0.89), 15);
+
+#test test_s21_asin_16
+ck_assert_ldouble_eq_tol(s21_asin(-0.75), asin(-0.75), 15);
+
+#test test_s21_asin_17
+ck_assert_ldouble_eq_tol(s21_asin(-0.300009), asin(-0.300009), 15);
+
+#test test_s21_asin_18
+ck_assert_ldouble_nan(s21_asin(1.000001));
+
+#test test_s21_asin_19
+ck_assert_ldouble_nan(s21_asin(-1.000001));
+
+#test test_s21_asin_20
+ck_assert_ldouble_nan(s21_asin(10));
+
+#test test_s21_asin_21
+ck_assert_ldouble_nan(s21_asin(999999));
+
+#test test_s21_asin_22
+ck_assert_ldouble_nan(s21_asin(999990.99));
+
+#test test_s21_asin_23
+ck_assert_ldouble_nan(s21_asin(-50.999));
+
+#test test_s21_asin_24
+ck_assert_ldouble_nan(s21_asin(S21_NAN));
+
+#test test_s21_asin_25
+ck_assert_ldouble_eq_tol(s21_asin(-0), asin(-0), 15);
+
+//____________________atan____________________
+
+#test test_s21_atan_1
+ck_assert_ldouble_eq_tol(s21_atan(0), atan(0), 15);
+
+#test test_s21_atan_2
+ck_assert_ldouble_eq_tol(s21_atan(0.1), atan(0.1), 15);
+
+#test test_s21_atan_3
+ck_assert_ldouble_eq_tol(s21_atan(0.01), atan(0.01), 15);
+
+#test test_s21_atan_4
+double x = -0.001;
+ck_assert_ldouble_eq_tol(s21_atan(x), atan(x), 15);
+
+#test test_s21_atan_5
+ck_assert_ldouble_eq_tol(s21_atan(0.0001), atan(0.0001), 15);
+
+#test test_s21_atan_6
+ck_assert_ldouble_eq_tol(s21_atan(-0.00001), atan(-0.00001), 15);
+
+#test test_s21_atan_7
+ck_assert_ldouble_eq_tol(s21_atan(0.000001), atan(0.000001), 15);
+
+#test test_s21_atan_8
+ck_assert_ldouble_eq_tol(s21_atan(-0.000001), atan(-0.000001), 15);
+
+#test test_s21_atan_9
+ck_assert_ldouble_eq_tol(s21_atan(1), atan(1), 15);
+
+#test test_s21_atan_10
+ck_assert_ldouble_eq_tol(s21_atan(-1), atan(-1), 15);
+
+#test test_s21_atan_11
+ck_assert_ldouble_eq_tol(s21_atan(0.999999), atan(0.999999), 15);
+
+#test test_s21_atan_12
+ck_assert_ldouble_eq_tol(s21_atan(-0.999999), atan(-0.999999), 15);
+
+#test test_s21_atan_13
+ck_assert_ldouble_eq_tol(s21_atan(1.000000), atan(1.000000), 15);
+
+#test test_s21_atan_14
+ck_assert_ldouble_eq_tol(s21_atan(0.5), atan(0.5), 15);
+
+#test test_s21_atan_15
+ck_assert_ldouble_eq_tol(s21_atan(0.89), atan(0.89), 15);
+
+#test test_s21_atan_16
+ck_assert_ldouble_eq_tol(s21_atan(-0.75), atan(-0.75), 15);
+
+#test test_s21_atan_17
+ck_assert_ldouble_eq_tol(s21_atan(-0.300009), atan(-0.300009), 15);
+
+#test test_s21_atan_18
+ck_assert_ldouble_eq_tol(s21_atan(1.000001), atan(1.000001), 15);
+
+#test test_s21_atan_19
+ck_assert_ldouble_eq_tol(s21_atan(-1.000001), atan(-1.000001), 15);
+
+#test test_s21_atan_20
+ck_assert_ldouble_eq_tol(s21_atan(10), atan(10), 15);
+
+#test test_s21_atan_21
+ck_assert_ldouble_eq_tol(s21_atan(999999), atan(999999), 15);
+
+#test test_s21_atan_22
+ck_assert_ldouble_eq_tol(s21_atan(999990.99), atan(999990.99), 15);
+
+#test test_s21_atan_23
+ck_assert_ldouble_eq_tol(s21_atan(-50.999), atan(-50.999), 15);
+
+
+//____________________ceil____________________
+
+#test test_s21_ceil_1
+ck_assert_ldouble_eq(s21_ceil(0), ceil(0));
+
+#test test_s21_ceil_2
+ck_assert_ldouble_eq(s21_ceil(0.0005), ceil(0.0005));
+
+#test test_s21_ceil_3
+ck_assert_ldouble_eq(s21_ceil(0.98), ceil(0.98));
+
+#test test_s21_ceil_4
+ck_assert_ldouble_eq(s21_ceil(0.999999), ceil(0.999999));
+
+#test test_s21_ceil_5
+ck_assert_ldouble_eq(s21_ceil(0.99999999999999999999), ceil(0.99999999999999999999));
+
+#test test_s21_ceil_6
+ck_assert_ldouble_eq(s21_ceil(987654321.9999999999999999999999999999999999999999), ceil(987654321.9999999999999999999999999999999999999999));
+
+#test test_s21_ceil_7
+ck_assert_ldouble_eq(s21_ceil(-0.99999999999999999999), ceil(-0.99999999999999999999));
+
+#test test_s21_ceil_8
+ck_assert_ldouble_eq(s21_ceil(-987654321.9999999999999999999999999999999999999999), ceil(-987654321.9999999999999999999999999999999999999999));
+
+#test test_s21_ceil_9
+ck_assert_ldouble_eq(s21_ceil(9999999999999999), ceil(9999999999999999));
+
+#test test_s21_ceil_10
+ck_assert_ldouble_eq(s21_ceil(99999999999999999), ceil(99999999999999999));
+
+#test test_s21_ceil_11
+ck_assert_ldouble_eq(s21_ceil(-9999999999999999), ceil(-9999999999999999));
+
+#test test_s21_ceil_12
+ck_assert_ldouble_eq(s21_ceil(-5.5000000), ceil(-5.5000000));
+
+#test test_s21_ceil_13
+ck_assert_ldouble_eq(s21_ceil(7), ceil(7));
+
+#test test_s21_ceil_14
+ck_assert_ldouble_eq(s21_ceil(-0.0), ceil(-0.0));
+
+#test test_s21_ceil_15
+ck_assert_ldouble_eq(s21_ceil(-0.000001), ceil(-0.000001));
+
+#test test_s21_ceil_16
+ck_assert_ldouble_eq(s21_ceil(-0.0000000000000000001), ceil(-0.0000000000000000001));
+
+#test test_s21_ceil_17
+ck_assert_ldouble_eq(s21_ceil(0.0000000000000000001), ceil(0.0000000000000000001));
+
+#test test_s21_ceil_18
+ck_assert_ldouble_eq(s21_ceil(-111111111.0000000000000000001), ceil(-111111111.0000000000000000001));
+
+#test test_s21_ceil_19
+ck_assert_ldouble_eq(s21_ceil(-123456789.000001), ceil(-123456789.000001));
+
+#test test_s21_ceil_20
+ck_assert_ldouble_eq(s21_ceil(123456789.000001), ceil(123456789.000001));
+
+
+//____________________floor____________________
+
+#test test_s21_floor_1
+ck_assert_ldouble_eq(s21_floor(0), floor(0));
+
+#test test_s21_floor_2
+ck_assert_ldouble_eq(s21_floor(0.0005), floor(0.0005));
+
+#test test_s21_floor_3
+ck_assert_ldouble_eq(s21_floor(0.98), floor(0.98));
+
+#test test_s21_floor_4
+ck_assert_ldouble_eq(s21_floor(0.999999), floor(0.999999));
+
+#test test_s21_floor_5
+ck_assert_ldouble_eq(s21_floor(0.99999999999999999999), floor(0.99999999999999999999));
+
+#test test_s21_floor_6
+ck_assert_ldouble_eq(s21_floor(987654321.9999999999999999999999999999999999999999), floor(987654321.9999999999999999999999999999999999999999));
+
+#test test_s21_floor_7
+ck_assert_ldouble_eq(s21_floor(-0.99999999999999999999), floor(-0.99999999999999999999));
+
+#test test_s21_floor_8
+ck_assert_ldouble_eq(s21_floor(-987654321.9999999999999999999999999999999999999999), floor(-987654321.9999999999999999999999999999999999999999));
+
+#test test_s21_floor_9
+ck_assert_ldouble_eq(s21_floor(9999999999999999), floor(9999999999999999));
+
+#test test_s21_floor_10
+ck_assert_ldouble_eq(s21_floor(99999999999999999), floor(99999999999999999));
+
+#test test_s21_floor_11
+ck_assert_ldouble_eq(s21_floor(-9999999999999999), floor(-9999999999999999));
+
+#test test_s21_floor_12
+ck_assert_ldouble_eq(s21_floor(-5.5000000), floor(-5.5000000));
+
+#test test_s21_floor_13
+ck_assert_ldouble_eq(s21_floor(7), floor(7));
+
+#test test_s21_floor_14
+ck_assert_ldouble_eq(s21_floor(-0.0), floor(-0.0));
+
+#test test_s21_floor_15
+ck_assert_ldouble_eq(s21_floor(-0.000001), floor(-0.000001));
+
+#test test_s21_floor_16
+ck_assert_ldouble_eq(s21_floor(-0.0000000000000000001), floor(-0.0000000000000000001));
+
+#test test_s21_floor_17
+ck_assert_ldouble_eq(s21_floor(0.0000000000000000001), floor(0.0000000000000000001));
+
+#test test_s21_floor_18
+ck_assert_ldouble_eq(s21_floor(-111111111.0000000000000000001), floor(-111111111.0000000000000000001));
+
+#test test_s21_floor_19
+ck_assert_ldouble_eq(s21_floor(-123456789.000001), floor(-123456789.000001));
+
+#test test_s21_floor_20
+ck_assert_ldouble_eq(s21_floor(123456789.000001), floor(123456789.000001));
+
+#test test_s21_abs_1
+ck_assert_int_eq(s21_abs(123456789), abs(123456789));
+
+#test test_s21_abs_2
+ck_assert_int_eq(s21_abs(-123456789), abs(-123456789));
+
+#test test_s21_fabs_1
+ck_assert_ldouble_eq(s21_fabs(123456789.000001), fabs(123456789.000001));
+
+#test test_s21_fabs_2
+ck_assert_ldouble_eq(s21_fabs(-123456789.000001), fabs(-123456789.000001));
+
+
+#test test_s21_pow_4
+ck_assert_ldouble_eq_tol(s21_pow(3,-0), pow(3,-0), 7);
+
+
+#test test_s21_pow_5
+ck_assert_ldouble_eq_tol(s21_pow(S21_NAN,0), pow(S21_NAN,0), 7);
+
+
+#test test_s21_pow_7
+ck_assert_ldouble_eq_tol(s21_pow(S21_NAN,-0), pow(S21_NAN,-0), 7);
+
+#test test_s21_pow_8
+ck_assert_ldouble_eq_tol(s21_pow(+0,S21_INFINITY), pow(+0,S21_INFINITY), 7);
+
+
+#test test_s21_pow_9
+ck_assert_ldouble_eq_tol(s21_pow(S21_INFINITY,+0), pow(S21_INFINITY,+0), 7);
+
+
+#test test_s21_pow_10
+ck_assert_ldouble_eq_tol(s21_pow(S21_INFINITY,0), pow(S21_INFINITY,0), 7);
